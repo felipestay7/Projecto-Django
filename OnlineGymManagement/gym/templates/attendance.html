@@ -1,0 +1,62 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+<style>
+.row{
+text-align:left;
+}</style>
+<div class="container" style="padding:1%;background-color:White;border-radius:10px;width:90%;margin-top:4%;">
+<h3 style="font-weight:bold;margin-top:2%;margin-bottom:3%;color:grey">Atencion</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Seleccionar Entrenador<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="name" style="padding:10px;width:100%">
+            {% for i in member1 %}
+            {% if not i.user.is_staff %}
+            <option value="{{i.user.username}}">{{i.user.username}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+        </div>
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Introducir Fecha<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="date"  style="width:100%;padding:5px" name="date">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Atencion<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <select name="attend" style="padding:10px;width:100%">
+            <option value="Present">Presente</option>
+            <option value="Absent">Ausente</option>
+        </select>
+    </div>
+        </div>
+
+
+    <div align="center">
+    <button type="submit" class="btn btn-dark" style="height:45px;margin-top:2%;width:25%;float:center">
+            REGISTRAR</button>
+</div>
+    </form>
+
+    </div>
+{% if error %}
+<script>
+    alert('ATENCION AGREGADA CON EXITO');
+    window.location = "{% url 'view_attendance' %}";
+</script>
+{% endif %}
+
+  {% endblock %}

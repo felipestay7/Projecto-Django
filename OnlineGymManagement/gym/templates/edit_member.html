@@ -1,0 +1,90 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+<div class="container" style="background:white">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:2%" align="center">Actualizar registro miembro</h2><hr>
+
+<div class="container-fluid" align="left" style="">
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nombre</label>
+      <input type="text" class="form-control" value="{{trainer.user.first_name}}" name="fname" id="inputEmail4">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Apellido</label>
+      <input type="text" class="form-control" name="lname" value="{{trainer.user.last_name}}" id="inputPassword4">
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Username</label>
+      <input type="text" class="form-control" name="uname" value="{{trainer.user.username}}" id="inputEmail4" readonly>
+    </div>
+        <div class="form-group col-md-12">
+      <label for="inputEmail4">Email</label>
+      <input type="text" class="form-control" name="email" value="{{trainer.user.email}}" id="inputEmail4">
+    </div>
+  </div>
+<div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Direccion</label>
+      <input type="text" class="form-control" name="address" value="{{trainer.address}}" id="inputEmail4">
+    </div>
+  </div>
+
+ <div class="form-row">
+    <div class="form-group col-md-12">
+    <label for="exampleInputPassword1">Contacto</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{trainer.contact}}" name="contact">
+    </div></div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Fecha Nacimiento</label>
+    <input type="date" class="form-control" id="exampleInputPassword1" name="dob">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Fecha Nacimiento</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{trainer.dob}}" readonly>
+  </div>
+        </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Altura</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{trainer.height}}" name="height">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleInputPassword1">Peso</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" value="{{trainer.weight}}" name="weight">
+  </div>
+        </div>
+<div class="form-row">
+    <div class="form-group col-md-10">
+    <label for="exampleInputPassword1">Imagen</label>
+    <input type="file" class="form-control" id="exampleInputPassword1" name="image">
+  </div>
+    <div class="form-group col-md-2">
+    <label for="exampleInputPassword1"></label>
+   <img src="{{trainer.image.url}}" style="width:100px;height:110px">
+  </div>
+</div>
+
+  <button type="submit" class="btn btn-primary" style="margin-bottom:5%">ACTUALIZAR</button>
+
+            </form>
+        </div>
+    </div></div></div>
+
+
+{% if error %}
+<script>
+    alert('ACTUALIZACION EXITOSA');
+    window.location = "{% url 'all_member' %}";
+</script>
+{% endif %}
+{% endblock %}

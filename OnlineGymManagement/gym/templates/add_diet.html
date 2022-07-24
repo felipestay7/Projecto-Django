@@ -1,0 +1,52 @@
+{% extends 'navigation3.html' %}
+{% block body1 %}
+{% load static %}
+<style>
+.row{
+text-align:left;
+}</style>
+<div class="container" style="padding:1%;background-color:White;border-radius:10px;width:90%;margin-top:4%;">
+<h3 style="font-weight:bold;margin-top:2%;margin-bottom:3%;color:grey">Agregar Dieta</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Introducir comida<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="text" placeholder="Introducir comida" style="width:100%;padding:5px" name="meal">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Introducir Horario<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="time" style="width:100%;padding:5px" name="time">
+    </div>
+    </div>
+
+    <div class="row" style="margin-bottom:2%">
+    <div class="col-md-4">
+        <span style="font-type:bold">Que comer<span style="color:red">*</span></span>
+    </div>
+    <div class="col-md-8">
+        <input type="text" placeholder="Introducir que comer" style="width:100%;padding:5px" name="eat">
+    </div>
+    </div>
+        <div align="center">
+        <button type="submit" class="btn btn-dark" style="height:45px;margin-top:2%;width:25%;float:center">
+            AGREGAR</button>
+</div>
+    </form>
+
+    </div>
+{% if error %}
+<script>
+    alert('Dieta agregada con exito');
+    window.location = "{% url 'view_diet' %}";
+</script>
+{% endif %}
+
+  {% endblock %}
